@@ -1,4 +1,4 @@
-module github.com/the-gophers/go-action
+module github.com/avonengel/go-docker-action
 
 go 1.16
 

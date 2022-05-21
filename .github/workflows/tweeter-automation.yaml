@@ -64,7 +64,7 @@ jobs:
       - name: build cross-platform binaries
         env:
           PLATFORMS: darwin/amd64 darwin/arm64 windows/amd64 linux/amd64 linux/arm64
-          VERSION_INJECT: github.com/the-gophers/go-action/pkg/tweeter.Version
+          VERSION_INJECT: github.com/avonengel/go-docker-action/pkg/tweeter.Version
           OUTPUT_PATH_FORMAT: ./bin/${{ env.RELEASE_VERSION }}/{{.OS}}/{{.Arch}}/tweeter
         run: |
           gox -osarch="${PLATFORMS}" -ldflags "-X ${VERSION_INJECT}=${RELEASE_VERSION}" -output "${OUTPUT_PATH_FORMAT}"
