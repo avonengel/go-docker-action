@@ -112,18 +112,18 @@ TODO: record and post the first lab walking through creation, execution and opti
     action and see that it built the action, built the Dockerfile and executed the entrypoint Go application. Also note
     how long it took to run the action. **Using a Dockerfile will cause it to rebuild that image EACH time the action
     runs!**. We can do better than that. More ahead.
-12) Let's tag our first release (`git tag v1.0.0`) and push the tag
-    (`git push origin v1.0.0`). This should create our first release in GitHub via the `release action` workflow.
-13) Navigate to the `v1.0.0` release and click edit. Within the release edit page, you should see "Publish this Action to the GitHub Marketplace".
-    If you check that box, your action will now be publicly advertised to all of GitHub!
-14) **PSA:** The rest of this is optional. If you don't care about your action going fast, stop right here.
 15) Now we are going to make this **FAST** by pre-baking our container image. Go back to `templated-action` and edit
-    `./github/workflows/release-image.yml`. Change `docker.pkg.github.com/owner/` to use your repo owner for `owner`.
+    `./github/workflows/image-release.yml`. Change `ghcr.io/owner/` to use your repo owner for `owner`.
     Commit and push the changes.
 17) Now tag the repo with `git tag image-v1.0.0` and then push the tag `git push origin image-v1.0.0`. This will
     kick off the image release build.
 18) Replace `image: Dockerfile` with `image: docker://ghcr.io/your-repo/your-image:1.0.0` replacing the repo and image name.
     Commit the changes and tag a new release of the Action as done in #12.
+12) Let's tag our first release (`git tag v1.0.0`) and push the tag
+    (`git push origin v1.0.0`). This should create our first release in GitHub via the `release action` workflow.
+13) Navigate to the `v1.0.0` release and click edit. Within the release edit page, you should see "Publish this Action to the GitHub Marketplace".
+    If you check that box, your action will now be publicly advertised to all of GitHub!
+
 19) Rerun the continuous integration and see how much faster the action runs now that it doesn't have to rebuild
     the container image each time.
     
